@@ -1,7 +1,7 @@
 version: '2.4'
 services: 
   bt:
-    image: jangrui/baota:latest
+    image: jangrui/baota:lnmp
     container_name: baota
     restart: unless-stopped
     user: root
@@ -18,9 +18,14 @@ services:
     ports: 
       - 3322:3322
       - 8888:8888
+      - 80:80
+      - 443:443
+      - 3306:3306
     volumes: 
       - www:/www
       - ./www/backup:/www/backup
+      - ./www/wwwroot:/www/wwwroot
+      - ./www/wwwlogs:/www/wwwlogs
       
 volumes: 
   www:

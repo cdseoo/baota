@@ -1,7 +1,7 @@
 # docker 部署宝塔面板
 
-[![](https://images.microbadger.com/badges/version/jangrui/baota:latest.svg)](https://microbadger.com/images/jangrui/baota:latest "jangrui/baota:latest")
-[![](https://images.microbadger.com/badges/image/jangrui/baota:latest.svg)](https://microbadger.com/images/jangrui/baota:latest "jangrui/baota:latest")
+[![](https://images.microbadger.com/badges/version/jangrui/baota:lnmp.svg)](https://microbadger.com/images/jangrui/baota:lnmp "jangrui/baota:lnmp")
+[![](https://images.microbadger.com/badges/image/jangrui/baota:lnmp.svg)](https://microbadger.com/images/jangrui/baota:lnmp "jangrui/baota:lnmp")
 
 >  基于 Ubuntu 镜像构建宝塔面板。
 
@@ -10,6 +10,7 @@
 ```
 git clone https://github.com/jangrui/baota
 cd baota
+git checkout lnmp
 docker-compose pull
 docker-compose up -d
 ```
@@ -37,3 +38,5 @@ docker-compose up -d
 
 - `/www` 映射到宿主机的 `volume` 卷中（`/var/lib/docker/volumes/$(basename $PWD)/_data/`）。
 - `/www/backup` 映射到当前目录下的 `www/backup` 目录。
+- `/www/wwwroot` 映射到当前目录下的 `www/wwwroot` 目录。
+- `/www/wwwlogs` 映射到当前目录下的 `www/wwwlogs` 目录。

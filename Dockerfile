@@ -38,3 +38,16 @@ RUN chmod +x /entrypoint.sh \
 CMD /entrypoint.sh
 EXPOSE ${BT_PORT} ${SSH_PORT}
 HEALTHCHECK --interval=5s --timeout=3s CMD curl -fs http://localhost:${BT_PORT} || exit 1 
+
+FROM baota AS lnmp
+
+ARG NGINX_VERSION=1.17
+ARG PHP_VERSION=7.4
+ARG MYSQL_VERSION=mariadb_10.4
+ARG INSTALL_SHELL=/www/server/panel/install/install_soft.sh
+
+RUN bash ${INSTALL_SHELL} 0 install nginx ${NGINX_VERSION}
+RUN bash ${INSTALL_SHELL} 0 install php ${PHP_VERSION}
+RUN bash ${INSTALL_SHELL} 0 install mysql ${MYSQL_VERSION}
+
+EXPOSE 80 443 3306
